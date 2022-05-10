@@ -1,0 +1,167 @@
+// Document
+// - - - - - - - - - - - - - - - - - - - - 
+@mixin box-sizing {
+  box-sizing:border-box;
+}
+
+// Sections
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Remove margin in all browsers
+@mixin body {
+  margin: 0;
+}
+
+// 1. Render `main` consistently in IE.
+@mixin main {
+  display: block;
+}
+
+// Grouping
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Add the correct box sizing in Firefox
+// 2. Show the overflow in Edge and IE.
+@mixin hr {
+  box-sizing: content-box;
+  height:0;
+  overflow: visible;
+}
+
+// 1. Correct the inheritance and scaling of font size in all browsers
+// 2. Correct the odd `em` font sizing in all browsers.
+@mixin source {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+// Text-level semantics
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Remove the gray background on active links in IE 10.
+@mixin a {
+  background-color: transparent;
+}
+
+// 1. Remove the bottom border in Chrome 57-
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera and Safari.
+@mixin abbr {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+// 1. Add the correct font weight in Chrome, Edge, and Safari
+@mixin bold {
+  font-weight: bolder;
+}
+
+// 1. Add the correct font size in all browsers
+@mixin small {
+  font-size: 80%;
+}
+
+// 1. Prevent `sub` and `sub` elements from affecting the line height in all browers
+@mixin a-sub {
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom :-0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+}
+
+// Embeded Content
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Remove the border on images inside links in IE 10
+@mixin image {
+  border-style: none;
+}
+
+// Forms
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Change the font styles in all browsers
+// 2. Remove the margin in Firefox and Safari.
+@mixin form-margins {
+  font-family: inherit;
+  font-size:100%;
+  line-height: 1.15; // TODO: Global size
+  margin:0;
+}
+
+// 1. Show overflow in Edge
+@mixin form-overflow {
+  overflow:visible;
+}
+
+// 1. Remove the inheritance of text transform in firefox
+@mixin form-transform {
+  text-transform: none;
+}
+
+// 1. Correct the inability to style clickable types in iOS ans Safari
+@mixin a-button-types {
+  button, 
+  [type="button"], 
+  [type="reset"], 
+  [type="submit"] {
+    -webkit-appearance: button;
+
+    &::-moz-focus-inner {
+      border-style:none;
+      padding: 0;
+    }
+
+    &::-moz-focusring {
+      outline: 1px dotted ButtonText;
+    }
+  }
+}
+
+// 1. Correct the padding in Firefox.
+@mixin fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+// 1. Remove the default vertical scollbar in IE 10+.
+@mixin textarea {
+  overflow: auto;
+}
+
+// 1. Add the correct box sizing in IE 10
+// 2. Remove the padding in IE 10
+@mixin form-checks {
+  &[type="checkbox"],
+  &[type="radio"]  {
+    box-sizing: border-box;
+    padding: 0;
+  }
+}
+
+// 1. Correct the cursor style of increment and decrement buttons in Chrome
+@mixin form-number {
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+}
+
+// Misc
+// - - - - - - - - - - - - - - - - - - - - 
+
+// 1. Add the correct display in IE 10.
+@mixin a-hidden {
+  template, [hidden] {
+    display: none;
+  }
+}

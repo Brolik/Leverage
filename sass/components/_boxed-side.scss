@@ -1,0 +1,46 @@
+@use '../utility' as lv;
+
+@mixin boxed-side() {
+  .boxed-side {
+    display:grid;
+    grid-row-gap: 2rem;
+    grid-template-areas:
+      "image"
+      "content";
+    grid-template-columns: auto;
+    margin-bottom:2rem;
+
+    @media screen and (min-width:680px) {
+      grid-column-gap: 4rem;
+      grid-row-gap: 6rem;
+      grid-template-areas: "content image";
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom:5rem;
+
+      &:nth-child(even) {
+        grid-template-areas: "image content";
+      }
+    }
+
+    @include lv.e('content') {
+      align-self:center;
+      grid-area: content;
+      justify-self: center;
+
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+    }
+
+    @include lv.e('image') {
+      grid-area: image;
+
+      img {
+        height: auto;
+        width:100%;
+      }
+    }
+
+    @content;
+  }
+}

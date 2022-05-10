@@ -1,0 +1,111 @@
+@forward '../index';
+
+@use '../index' as lv;
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Document
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*, html, body {
+  @include lv.r-box-sizing;
+}
+
+html, body {
+  @include lv.t-body;
+}
+
+body {
+  @include lv.r-body;
+}
+
+main {
+  @include lv.r-main;
+}
+
+hr {
+  @include lv.r-hr;
+}
+
+img {
+  @include lv.r-image;
+  @include lv.b-image;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+button, input, optgroup, select, textarea {
+  @include lv.r-form-margins;
+}
+
+button, input {
+  @include lv.r-form-overflow;
+}
+
+button, select {
+  @include lv.r-form-transform;
+}
+
+@include lv.r-a-button-types;
+
+fieldset {
+  @include lv.r-fieldset;
+}
+
+input {
+  @include lv.r-form-checks;
+  @include lv.r-form-number;
+}
+
+textarea {
+  @include lv.r-textarea;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Typography
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+b, strong {
+  @include lv.r-bold;
+}
+
+pre, code, kbd, samp {
+  @include lv.r-source;
+}
+
+small {
+  @include lv.r-small;
+}
+
+#{lv.t-headings(1,6)} {
+  @include lv.t-heading('headers');
+}
+
+@for $i from 1 through 6 {
+  #{lv.t-headings($i, $i)} {
+    @include lv.t-heading('h' + $i, $i);
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Grid
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include lv.grid;
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.centered {
+  @extend %centered;
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+.dimmer {
+  @extend %dimmer;
+}
+
+[class$='__is-content'] {
+  @extend %is-content;
+}

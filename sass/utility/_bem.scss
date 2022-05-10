@@ -1,0 +1,29 @@
+/// Element
+/// @access public
+/// @param {String} $name - Element's name
+@mixin element($name) {
+  &__#{$name} {
+    @content;
+  }
+}
+
+@mixin e($name) {
+  @include element($name) {
+    @content;
+  }
+}
+
+/// Modifier
+/// @access public
+/// @param {String} $name - Modifier's name
+@mixin modifier($name) {
+  &--#{$name} {
+    @content;
+  }
+}
+
+@mixin m($name) {
+  @include modifier($name) {
+    @content;
+  }
+}

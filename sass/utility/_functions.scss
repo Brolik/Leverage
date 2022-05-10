@@ -1,0 +1,57 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:string';
+
+/// Check for the exsistance of a defined key.
+/// @author Kyle Jasso
+/// @param {object} $args - Variable list
+/// @param {String} $key - Value to look for
+@function has($args, $key) {
+  @return map.has-key(meta.keywords($args), $key);
+}
+
+@function set($args, $key) {
+  @return map.get(meta.keywords($args), $key);
+}
+
+@function strip-unit($num) {
+  @return math.div($num, ($num * 0 + 1));
+}
+
+@function pxToRem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+@function remToPx($rem) {
+  @return ($rem * 16) * 1px;
+}
+
+/// Convert font size to clamp() function.
+/// @author Kyle Jasso
+/// @param {string} $size - Font size
+@mixin rfs($min, $max) {
+  $converted_min: $min;
+  $converted_max: $max;
+
+  // Convert to px if necessary and strip unit
+  @if (string.index(#{$min}, 'rem')) {
+    $converted_min: strip-unit(remToPx($min));
+  } @else {
+    $converted_min: strip-unit($min);
+  }
+
+  // Convert to px if necessary and strip unit
+  @if (string.index(#{$max}, 'rem')) {
+    $converted_max: strip-unit(remToPx($max));
+  } @else {
+    $converted_max: strip-unit($max);
+  }
+
+  // Calculate the slope
+  $v: math.div((100 * ($converted_max - $converted_min)), (1400 - 600)) * 1vw;
+  $r: pxToRem(math.div((600 * $converted_max) - (1400 * $converted_min), 600 - 1400) * 1px);
+
+  // Return the font size with a clamp
+  font-size: clamp(pxToRem($converted_min * 1px),  $v + $r, pxToRem($converted_max * 1px));
+}

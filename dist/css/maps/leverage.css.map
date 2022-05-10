@@ -1,0 +1,1 @@
+{"version":3,"sources":["leverage.scss"],"names":[],"mappings":"AAQA,KACE,uBACA,UAAA,CAAA","file":"../leverage.css","sourcesContent":["// This file should create the full css\n\n$background-color: green !default;\n\n$colors: (\n  'primary':  orange\n) !default;\n\nbody {\n  background-color: $background-color;\n  color:white;\n}"]}

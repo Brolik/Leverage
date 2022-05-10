@@ -1,0 +1,143 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+@use '../utility/' as fn;
+
+
+$emphasis-high: .87 !default;
+$emphasis-medium: .6 !default;
+$emphasis-disabled: .38 !default;
+
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !default;
+
+$font-size:16px !default;
+
+$font-weight: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  black: 900
+) !default;
+
+$headers-font-family: $font-family !default;
+
+$headers-margin-gap: 2rem !default;
+
+$headers-text-transform: capitalize !default;
+
+$line-height: 1.15 !default;
+
+$headers: (
+  'headers': (
+    // color: rgba(map.get(colors.$pallet, 'black'), global.$emphasis-high),
+    font-family: $headers-font-family,
+    text-transform: $headers-text-transform,
+    margin: 2rem 0 1rem,
+  ),
+  'h1': ( // 96/96
+    font-size: (min: 2rem, max: 67.34px),
+    line-height: 67.34px,
+    font-weight: map.get($font-weight, light),
+    letter-spacing: (-1.5, 6)
+  ),
+
+  'h2': ( // 60/60
+    font-size: (min: 1.5rem , max: 50.517px),
+    line-height: 50.517px,
+    font-weight: map.get($font-weight, light),
+    letter-spacing: (-1.5, 6)
+  ),
+
+  'h3': ( // 48/50
+    font-size: (min: 1.17rem, max: 37.897px),
+    line-height: 40px,
+    font-weight: map.get($font-weight, light),
+    letter-spacing: (-1.5, 6)
+  ),
+
+  'h4': ( // 34/40
+    font-size: (min: 1rem, max: 28.43px),
+    line-height: 30px,
+    font-weight: map.get($font-weight, regular),
+    letter-spacing: normal
+  ),
+
+  'h5': ( // 24/32
+    font-size: (min: .83rem, max: 21.328px),
+    line-height: 28px,
+    font-weight: map.get($font-weight, regular),
+    letter-spacing: normal
+  ),
+
+  'h6': ( // 20/32
+    font-size: (min: .67rem, max: 20px),
+    line-height: 32px,
+    font-weight: map.get($font-weight, medium),
+    letter-spacing: (.25, 1.25)
+  )
+) !default;
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// 1.0 Functions
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@function letter-spacing($spacing) {
+  @if (meta.type-of($spacing) == string) {
+    @return $spacing;
+  } @else {
+    @return math.div(list.nth($spacing, 1), (list.nth($spacing, 2)) * 16) * 1em;
+  }
+}
+
+@function headings($from:1, $to:6, $class: true) {
+  @if $from == $to {
+    @return 'h#{$from}' + if($class, ', .h#{$from}', '');
+  } @else {
+    @return 'h#{$from},' + if($class, '.h#{$from},', '') + headings($from+1, $to, $class);
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// 2.0 Mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@mixin body() {
+  font-size:$font-size;
+  font-family:$font-family;
+  line-height: $line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjusted: 100%; // Prevent font-size adjustments on orientation changes
+  -ms-text-size-adjusted:100%;
+  color: rgba(fn.color('black'), $emphasis-high);
+}
+
+@mixin bold() {
+  
+}
+
+@mixin headings() {
+  color: rgba(fn.color('black'), $emphasis-high);
+  font-family: $headers-font-family;
+  text-transform: $headers-text-transform;
+  margin:$headers-margin-gap 0;
+}
+
+@mixin heading($key, $i:'') {
+  $rules: map.get($headers, $key);
+
+  @each $attribute, $value in $rules {
+    @if($attribute == 'letter-spacing') {
+      #{$attribute}: letter-spacing($value);
+    } @else if($attribute == 'font-size') {
+      @if (meta.type-of($value) == 'map') {
+        @include fn.rfs(map.get($value, min), map.get($value, max));
+      } @else {
+        @include fn.rfs(1rem, $value);
+      }
+    } @else {
+      #{$attribute}: $value;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+
+$-pallet: (
+  'amber': #ffc107,
+  'black': #000000,
+  'blue': #2196f3,
+  'blue-gray': #607d8b,
+  'brown': #795548,
+  'cyan': #00bcd4,
+  'gray': #9e9e9e,
+  'green': #4caf50,
+  'indigo': #3f51b5,
+  'red': #f44336,
+  'orange': #ff9800,
+  'pink': #e91e63,
+  'purple': #9c27b0,
+  'teal': #009688,
+  'yellow': #ffeb3b,
+  'white': #ffffff
+);
+
+$-brand: (
+  'primary': map.get($-pallet, 'blue'),
+  'secondary': map.get($-pallet, 'teal'),
+  'accent': map.get($-pallet, 'amber')
+);
+
+$-scale: (
+  100: 60%, 200: 40%, 300: 30%, 400: 10%,
+  500: 0%,
+  600: 10%, 700: 30%, 800: 40%, 900: 60%
+) !default;
+
+@function color($color, $weight: 500) {
+  $theme: map.merge($-pallet, $-brand);
+
+  @if meta.variable-exists('colors') {
+    $theme: map.merge($theme, $colors);
+  }
+
+  @if not map.has-key($-scale, $weight) {
+    @debug 'Weight: #{$weight} not found. Scaling to #{math.round($weight/100)}00';
+    $weight: math.round($weight/100)*100;
+  }
+
+  @if map.has-key($theme, $color) {
+    // Check for base value
+    @if $weight == 500 {
+      @return map.get($theme, $color);
+    }
+
+    // Check for a static value
+    @if map.has-key($theme, '#{$color}-#{$weight}') {
+      @return map.get($theme, '#{$color}-#{$weight}');
+    }
+
+    // Return tint or shade
+    @if $weight > 500 {
+      @return mix(black, map.get($theme, $color), map.get($-scale, $weight));
+    } @else {
+      @return mix(white, map.get($theme, $color), map.get($-scale, $weight));
+    }
+  } @else {
+    @warn 'Color #{$color} not found.';
+    @return hotpink;
+  }
+
+  @return $color;
+}

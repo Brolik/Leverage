@@ -1,0 +1,56 @@
+@use 'sass:list';
+
+$grid-cells: 'center', 'end', 'start' !default;
+$grid-gap: 25px !default;
+$grid-column:1,2,3,4,5,6,7,8,9,10,11,12 !default;
+$grid-gutter:1% !default;
+$grid-sizes: 'lg', 'md', 'sm', 'xs' !default;
+
+$grid-breakpoints: (
+  'lg': 'screen',
+  'md': 'screen and (max-width:1200px)',
+  'sm': 'screen and (max-width:800px)',
+  'xs': 'screen and (max-width:500px)'
+);
+
+
+@mixin grid() {
+  .row {
+    display: grid;
+    grid-gap: $grid-gap;
+    grid-template-columns: repeat(12, 1fr);
+
+    &--no-gap {
+      grid-gap:0;
+    }
+
+    // Grid System
+    @each $key, $break in $grid-breakpoints {
+      @media #{$break} {
+        @each $size in $grid-sizes {
+          @if $key == $size {
+            @for $column from 1 through 12 {
+              .col-#{$size}-#{$column} {
+                grid-column-end: span $column;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Mobile System
+    $-mobile: null;
+    @each $size in $grid-sizes {
+      @for $column from 1 through 12 {
+        $-mobile: append($-mobile, ".col-#{$size}-#{$column}", $separator: comma);
+      }
+    }
+
+    @media screen and (max-width:360px) {
+      #{$-mobile} {
+        grid-column-end: span 12;
+      }
+    }
+  }
+}

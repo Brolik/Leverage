@@ -1,0 +1,33 @@
+%centered {
+  max-width:1200px;
+  margin:0 auto;
+}
+
+%clearfix {
+  &::after, &::before {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+%dimmer {
+  width: 100vw;
+  height:100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: none;
+}
+
+%is-content {
+  max-width:800px;
+  margin:0 auto;
+  position: relative;
+  z-index: 2;
+
+  @media screen and (max-width:810px) {
+    padding:0 25px;
+  }
+}

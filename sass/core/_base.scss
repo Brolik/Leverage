@@ -1,0 +1,9 @@
+@mixin image {
+  display:inline-block;
+  vertical-align: middle;
+  max-width:100%;
+  height: auto;
+  object-fit: cover;
+  -ms-interpolation-mode: bicubic;
+  width:100%;
+}

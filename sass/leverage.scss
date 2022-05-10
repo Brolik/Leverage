@@ -1,0 +1,10 @@
+$background-color: green !default;
+
+$colors: (
+  'primary':  orange
+) !default;
+
+body {
+  background-color: $background-color;
+  color:white;
+}
