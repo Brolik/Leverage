@@ -2,7 +2,8 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:list';
-@use '../utility/' as fn;
+// @use '../utility/' as fn;
+@forward '../utility';
 
 
 $emphasis-high: .87 !default;
@@ -110,15 +111,15 @@ $headers: (
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjusted: 100%; // Prevent font-size adjustments on orientation changes
   -ms-text-size-adjusted:100%;
-  color: rgba(fn.color('black'), $emphasis-high);
+  // color: rgba(fn.color('black'), $emphasis-high);
 }
 
 @mixin bold() {
-  
+
 }
 
 @mixin headings() {
-  color: rgba(fn.color('black'), $emphasis-high);
+  // color: rgba(fn.color('black'), $emphasis-high);
   font-family: $headers-font-family;
   text-transform: $headers-text-transform;
   margin:$headers-margin-gap 0;
@@ -132,9 +133,9 @@ $headers: (
       #{$attribute}: letter-spacing($value);
     } @else if($attribute == 'font-size') {
       @if (meta.type-of($value) == 'map') {
-        @include fn.rfs(map.get($value, min), map.get($value, max));
+        // @include fn.rfs(map.get($value, min), map.get($value, max));
       } @else {
-        @include fn.rfs(1rem, $value);
+        // @include fn.rfs(1rem, $value);
       }
     } @else {
       #{$attribute}: $value;
