@@ -1,9 +1,5 @@
 @use '../index' as lv;
 
-@include lv.body-copy {
+@include lv.body-copy {}
 
-}
-
-@include lv.card {
-    
-}
+@include lv.card {}

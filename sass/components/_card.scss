@@ -1,42 +1,35 @@
-@use "../utility" as lv;
+@use '../utility' as fn;
 
 @mixin card() {
   .card {
-    @content;
-    @include lv.elevation(1);
-    padding: 1rem 1rem 2rem;
+    @include fn.elevation(1);
     transition: box-shadow 333ms ease-in-out 150ms;
-
-    @media screen and (max-width: 768px) {
-      padding: 1rem 0.5rem 2rem;
-    }
-
+    
     &:hover {
-      @include lv.elevation(5);
+      @include fn.elevation(5);
       cursor: pointer;
       transition: box-shadow 333ms ease-in-out;
     }
+    
+    @include fn.e('container') {
+      padding: 1rem 1rem 2rem;
+  
+      @media screen and (max-width: 768px) {
+        padding: 1rem 0.5rem 2rem;
+      }
+    }
 
-    &__header {
+    @include fn.e('header') {
       margin: 2rem 0rem 0rem;
     }
 
-    &__subHeader {
+    @include fn.e('subHeader') {
       margin: 0.5rem 0rem 1.5rem;
 
       @media screen and (max-width: 768px) {
         margin: 0rem 0rem 2rem;
       }
     }
-
-    &__wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-gap: 1.5rem;
-
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      @content;
-    }
+    @content;
   }
 }
