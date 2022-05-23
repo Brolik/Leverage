@@ -20,5 +20,8 @@
     "gulp-sourcemaps": "^3.0.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "postcss": "^8.4.14"
+  }
 }
