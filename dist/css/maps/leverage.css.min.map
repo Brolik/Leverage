@@ -1,1 +1,1 @@
-{"version":3,"sources":["leverage.scss","leverage.css"],"names":[],"mappings":"AAMA;EACE,uBAPiB;EAQjB,YAAA;ACLF","file":"../leverage.css","sourcesContent":["$background-color: green !default;\n\n$colors: (\n  'primary':  orange\n) !default;\n\nbody {\n  background-color: $background-color;\n  color:white;\n}","body {\n  background-color: green;\n  color: white;\n}"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"../leverage.css","sourcesContent":[]}
