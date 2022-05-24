@@ -1,81 +1,35 @@
+@use '../utility' as fn;
 
-// @use 'sass:map';
-
-// @debug map.get(map.get(fn.$t-headers, 'h4'), 'font-size');
-
-// @mixin card() {
-//   .card {
-//     @include e.elevation(1);
+@mixin card() {
+  .card {
+    @include fn.elevation(1);
+    transition: box-shadow 333ms ease-in-out 150ms;
+    
+    &:hover {
+      @include fn.elevation(5);
+      cursor: pointer;
+      transition: box-shadow 333ms ease-in-out;
+    }
+    
+    @include fn.e('container') {
+      padding: 1rem 1rem 2rem;
   
-//     display:grid;
-//     grid-template-areas: 
-//       "media"
-//       "content"
-//       "links"
-//     ;
-//     position: relative;
-//     height:470px;
-//     transition: box-shadow 333ms ease-in-out 150ms;
+      @media screen and (max-width: 768px) {
+        padding: 1rem 0.5rem 2rem;
+      }
+    }
 
-//     &:hover {
-//       @include e.elevation(5);
-//       cursor: pointer;
-//       transition: box-shadow 333ms ease-in-out;
+    @include fn.e('header') {
+      margin: 2rem 0rem 0rem;
+    }
 
-//       .card__button {
-//         color: fn.color('secondary');
-//       }
+    @include fn.e('subHeader') {
+      margin: 0.5rem 0rem 1.5rem;
 
-//       .card__description {
-//         max-height:300px;
-//         transition: max-height 333ms ease-in-out;
-//       }
-//     }
-
-//     @include fn.e('button') {
-//       display:inline-block;
-//       position: unset;
-
-//       &::after {
-//         content: '';
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         bottom: 0;
-//         left: 0;
-
-//       }
-//     }
-
-//     @include fn.e('content') {
-//       padding:1rem;
-//       position: absolute;
-//       bottom:0;
-//       left:0;
-//       width: 100%;
-//       background-color: fn.color('white');
-//     }
-
-//     @include fn.e('description') {
-//       max-height:0;
-//       overflow:hidden;
-//       transition: max-height 333ms ease-in-out;
-//     }
-
-//     @include fn.e('sub-title') {
-//       @include fn.font-size(21.328px);
-//       margin:0.5rem 0;
-//       line-height:1rem;
-//     }
-
-//     @include fn.e('title') {
-//       @include fn.t-heading('h4');
-//       // @include fn.font-size(28.43px);
-//       // margin:1rem 0 0;
-//       // line-height:1rem;
-//       // padding-bottom:10px;
-//     }
-
-//     @content;
-//   }
-// }
+      @media screen and (max-width: 768px) {
+        margin: 0rem 0rem 2rem;
+      }
+    }
+    @content;
+  }
+}
