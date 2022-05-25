@@ -96,4 +96,27 @@
     margin: 0rem 0rem 2rem;
   }
 }
+
+.icon-block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+  .icon-block {
+    text-align: left;
+    padding: 1rem;
+  }
+}
+.icon-block img {
+  width: auto;
+}
+.icon-block__blocks {
+  padding: 2rem 0rem;
+}
+.icon-block__text {
+  max-width: 800px;
+  margin: 0 auto;
+}
 /*# sourceMappingURL=maps/style.css.map */
