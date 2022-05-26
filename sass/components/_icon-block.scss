@@ -1,0 +1,29 @@
+@use "../utility" as lv;
+
+@mixin icon-block() {
+  .icon-block {
+    @content;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+
+    @media screen and (max-width: 600px) {
+      text-align: left;
+      padding: 1rem;
+    }
+
+    img {
+      width: auto;
+    }
+
+    @include lv.e("blocks") {
+      padding: 2rem 0rem;
+    }
+    @include lv.e("text") {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    @content;
+  }
+}
