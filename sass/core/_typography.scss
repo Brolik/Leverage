@@ -23,7 +23,7 @@ $font-weight: (
 
 $headers-font-family: $font-family !default;
 
-$headers-margin-gap: 2rem !default;
+// $headers-margin-gap: 2rem !default;
 
 $headers-text-transform: capitalize !default;
 
@@ -34,7 +34,7 @@ $headers: (
     // color: rgba(map.get(colors.$pallet, 'black'), global.$emphasis-high),
     font-family: $headers-font-family,
     text-transform: $headers-text-transform,
-    margin: 2rem 0 1rem,
+    // margin: 2rem 0 1rem,
   ),
   'h1': ( // 96/96
     font-size: (min: 2rem, max: 67.34px),
@@ -52,14 +52,14 @@ $headers: (
 
   'h3': ( // 48/50
     font-size: (min: 1.17rem, max: 37.897px),
-    line-height: 40px,
+    // line-height: 40px,
     font-weight: map.get($font-weight, light),
     letter-spacing: (-1.5, 6)
   ),
 
   'h4': ( // 34/40
     font-size: (min: 1rem, max: 28.43px),
-    line-height: 30px,
+    // line-height: 30px,
     font-weight: map.get($font-weight, regular),
     letter-spacing: normal
   ),

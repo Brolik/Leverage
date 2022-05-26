@@ -1,46 +1,75 @@
 // @forward '../utility';
 
-// @mixin boxed-side() {
-//   .boxed-side {
-//     display:grid;
-//     grid-row-gap: 2rem;
-//     grid-template-areas:
-//       "image"
-//       "content";
-//     grid-template-columns: auto;
-//     margin-bottom:2rem;
+@use "../utility" as lv;
 
-//     @media screen and (min-width:680px) {
-//       grid-column-gap: 4rem;
-//       grid-row-gap: 6rem;
-//       grid-template-areas: "content image";
-//       grid-template-columns: repeat(2, 1fr);
-//       margin-bottom:5rem;
+@mixin boxed-side() {
+  .boxed-side {
+    @content;
+    display: grid;
+    grid-row-gap: 2rem;
+    grid-template-areas:
+      "image"
+      "content";
+    grid-template-columns: auto;
+    max-width: 1200px;
+    margin: 1rem 1rem 2rem;
 
-//       &:nth-child(even) {
-//         grid-template-areas: "image content";
-//       }
-//     }
+    h3 {
+      margin-bottom: 0rem;
+      margin-block-start: 0.25rem;
+      margin-block-end: 0.75rem;
+    }
 
-//     @include lv.e('content') {
-//       align-self:center;
-//       grid-area: content;
-//       justify-self: center;
+    h4 {
+      margin-top: 0rem;
+      line-height: normal;
+      margin-block-end: 0.5rem;
+    }
 
-//       display: grid;
-//       grid-template-columns: auto;
-//       grid-template-rows: auto;
-//     }
+    @media screen and (min-width: 1250px) {
+      margin: 1rem auto;
+    }
 
-//     @include lv.e('image') {
-//       grid-area: image;
+    @media screen and (min-width: 680px) {
+      grid-column-gap: 4rem;
+      grid-row-gap: 6rem;
+      grid-template-areas: "content image";
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 5rem;
 
-//       img {
-//         height: auto;
-//         width:100%;
-//       }
-//     }
+      &:nth-child(even) {
+        grid-template-areas: "image content";
+      }
+    }
 
-//     @content;
-//   }
-// }
+    @include lv.e("content") {
+      align-self: center;
+      grid-area: content;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+    }
+
+    @include lv.e("header") {
+      font-weight: 400;
+      line-height: 10px;
+    }
+
+    @include lv.e("image") {
+      grid-area: image;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    @include lv.e("link") {
+      display: block;
+      margin: 0.75rem 0rem;
+    }
+
+    @content;
+  }
+}

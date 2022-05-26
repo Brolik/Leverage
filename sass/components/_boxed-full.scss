@@ -1,0 +1,27 @@
+@use "../utility" as lv;
+
+@mixin boxed-full() {
+  .boxed-full {
+    @content;
+    max-width: 1200px;
+    max-height: 800px;
+    min-height: 600px;
+    margin: 2rem auto;
+    background-image: url("https://picsum.photos/1200/800");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include lv.e("content") {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      color: white;
+      padding: 5rem 2rem;
+    }
+
+    @content;
+  }
+}

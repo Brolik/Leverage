@@ -1,5 +1,9 @@
 @use '../index' as lv;
 
 @include lv.body-copy {}
-
+@include lv.boxed-side {}
 @include lv.card {}
+@include lv.banner {}
+@include lv.cta {}
+@include lv.icon-block {}
+@include lv.boxed-full {}
