@@ -1,17 +1,17 @@
-@use '../utility' as fn;
+@use '../utility' as lv;
 
 @mixin card() {
   .card {
-    @include fn.elevation(1);
+    @include lv.elevation(1);
     transition: box-shadow 333ms ease-in-out 150ms;
     
     &:hover {
-      @include fn.elevation(5);
+      @include lv.elevation(5);
       cursor: pointer;
       transition: box-shadow 333ms ease-in-out;
     }
     
-    @include fn.e('container') {
+    @include lv.e('container') {
       padding: 1rem 1rem 2rem;
   
       @media screen and (max-width: 768px) {
@@ -19,11 +19,11 @@
       }
     }
 
-    @include fn.e('header') {
+    @include lv.e('header') {
       margin: 2rem 0rem 0rem;
     }
 
-    @include fn.e('subHeader') {
+    @include lv.e('subHeader') {
       margin: 0.5rem 0rem 1.5rem;
 
       @media screen and (max-width: 768px) {

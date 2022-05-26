@@ -33,6 +33,8 @@
 @mixin source {
   font-family: monospace, monospace;
   font-size: 1em;
+  max-width:100vw;
+  overflow:scroll;
 }
 
 // Text-level semantics

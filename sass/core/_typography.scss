@@ -2,8 +2,6 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:list';
-// @use '../utility/' as fn;
-@forward '../utility';
 
 
 $emphasis-high: .87 !default;
