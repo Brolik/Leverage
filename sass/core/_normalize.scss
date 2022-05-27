@@ -10,6 +10,7 @@
 // 1. Remove margin in all browsers
 @mixin body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 // 1. Render `main` consistently in IE.
