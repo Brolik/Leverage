@@ -1,5 +1,5 @@
-@mixin intro-copy() {
-  .intro-copy {
+@mixin intro-copy($e-class:null) {
+  .intro-copy,#{$e-class} {
     @content;
   }
 }
