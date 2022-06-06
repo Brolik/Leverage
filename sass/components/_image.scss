@@ -1,0 +1,15 @@
+@use "../utility" as lv;
+
+@mixin image() {
+  .image {
+    @content;
+    max-width: 600px;
+    margin: 1rem auto;
+
+    @media screen and (max-width: 650px) {
+        margin: 1rem;
+    }
+
+    @content;
+  }
+}
