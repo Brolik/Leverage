@@ -2,7 +2,7 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:list';
-
+@use "../utility" as lv;
 
 $emphasis-high: .87 !default;
 $emphasis-medium: .6 !default;
@@ -131,9 +131,9 @@ $headers: (
       #{$attribute}: letter-spacing($value);
     } @else if($attribute == 'font-size') {
       @if (meta.type-of($value) == 'map') {
-        // @include fn.rfs(map.get($value, min), map.get($value, max));
+        @include lv.rfs(map.get($value, min), map.get($value, max));
       } @else {
-        // @include fn.rfs(1rem, $value);
+        @include lv.rfs(1rem, $value);
       }
     } @else {
       #{$attribute}: $value;

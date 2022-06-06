@@ -11,6 +11,10 @@
   @return map.has-key(meta.keywords($args), $key);
 }
 
+@function get($args, $key) {
+  @return map.get($args, $key);
+}
+
 @function set($args, $key) {
   @return map.get(meta.keywords($args), $key);
 }
