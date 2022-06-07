@@ -25,9 +25,9 @@ $headers-font-family: $font-family !default;
 
 // $headers-margin-gap: 2rem !default;
 
-$headers-text-transform: capitalize !default;
+$headers-text-transform: none !default;
 
-$line-height: 1.15 !default;
+$line-height: 1.32em !default;
 
 $headers: (
   'headers': (
@@ -38,15 +38,15 @@ $headers: (
   ),
   'h1': ( // 96/96
     font-size: (min: 2rem, max: 67.34px),
-    line-height: 67.34px,
-    font-weight: map.get($font-weight, light),
+    line-height: 1.32em,
+    font-weight: map.get($font-weight, regular),
     letter-spacing: (-1.5, 6)
   ),
 
   'h2': ( // 60/60
     font-size: (min: 1.5rem , max: 50.517px),
-    line-height: 50.517px,
-    font-weight: map.get($font-weight, light),
+    line-height: 1.32em,
+    font-weight: map.get($font-weight, regular),
     letter-spacing: (-1.5, 6)
   ),
 
