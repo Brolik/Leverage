@@ -1,7 +1,7 @@
 @use '../utility' as lv;
 
-@mixin card() {
-  .card {
+@mixin card($e-class:null) {
+  .card,#{$e-class} {
     @include lv.elevation(1);
     transition: box-shadow 333ms ease-in-out 150ms;
     
@@ -30,6 +30,7 @@
         margin: 0rem 0rem 2rem;
       }
     }
+    
     @content;
   }
 }
