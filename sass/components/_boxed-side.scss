@@ -45,7 +45,6 @@
     @include lv.e("content") {
       align-self: center;
       grid-area: content;
-      justify-self: center;
       display: grid;
       grid-template-columns: auto;
       grid-template-rows: auto;
