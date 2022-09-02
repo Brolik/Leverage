@@ -29,7 +29,9 @@ $headers-text-transform: capitalize !default;
 
 $line-height: 1.15 !default;
 
-$headers: (
+$headers:() !default;
+
+$-base-headers: (
   'headers': (
     // color: rgba(map.get(colors.$pallet, 'black'), global.$emphasis-high),
     font-family: $headers-font-family,
@@ -77,7 +79,9 @@ $headers: (
     font-weight: map.get($font-weight, medium),
     letter-spacing: (.25, 1.25)
   )
-) !default;
+);
+
+$headers: map.merge($-base-headers, $headers);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // 1.0 Functions
@@ -131,6 +135,7 @@ $headers: (
       #{$attribute}: letter-spacing($value);
     } @else if($attribute == 'font-size') {
       @if (meta.type-of($value) == 'map') {
+        @debug map.get($value, max);
         @include lv.rfs(map.get($value, min), map.get($value, max));
       } @else {
         @include lv.rfs(1rem, $value);
