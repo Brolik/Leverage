@@ -44,7 +44,7 @@ $-scale: (
 
   @if not map.has-key($-scale, $weight) {
     @debug 'Weight: #{$weight} not found. Scaling to #{math.round($weight/100)}00';
-    $weight: math.round($weight/100)*100;
+    $weight: math.round(math.div($weight, 100))*100;
   }
 
   @if map.has-key($theme, $color) {
