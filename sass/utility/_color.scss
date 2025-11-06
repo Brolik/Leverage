@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:map';
 @use 'sass:math';
 @use 'sass:meta';
@@ -60,9 +61,9 @@ $-scale: (
 
     // Return tint or shade
     @if $weight > 500 {
-      @return mix(black, map.get($theme, $color), map.get($-scale, $weight));
+      @return color.mix(black, map.get($theme, $color), map.get($-scale, $weight));
     } @else {
-      @return mix(white, map.get($theme, $color), map.get($-scale, $weight));
+      @return color.mix(white, map.get($theme, $color), map.get($-scale, $weight));
     }
   } @else {
     @warn 'Color #{$color} not found.';

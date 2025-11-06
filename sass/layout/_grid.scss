@@ -43,7 +43,7 @@ $grid-breakpoints: (
     $-mobile: null;
     @each $size in $grid-sizes {
       @for $column from 1 through 12 {
-        $-mobile: append($-mobile, ".col-#{$size}-#{$column}", $separator: comma);
+        $-mobile: list.append($-mobile, ".col-#{$size}-#{$column}", $separator: comma);
       }
     }
 

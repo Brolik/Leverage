@@ -135,7 +135,6 @@ $headers: map.merge($-base-headers, $headers);
       #{$attribute}: letter-spacing($value);
     } @else if($attribute == 'font-size') {
       @if (meta.type-of($value) == 'map') {
-        @debug map.get($value, max);
         @include lv.rfs(map.get($value, min), map.get($value, max));
       } @else {
         @include lv.rfs(1rem, $value);
